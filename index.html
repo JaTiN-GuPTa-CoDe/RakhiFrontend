@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Raksha Bandhan</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./rakhi-band.png">
+    <!-- SweetAlert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col">
+            <h1> &#127801;Happy Raksha Bandhan&#127801;</h1>
+            <h2>&#127801;Indian Festivals Celebration&#127801;</h2><br>
+            <h3>&#127801;My Dear Brother / Sister
+                <input id="nameInput" type="text" placeholder="Name" onfocus="removePlaceholder(event)"
+                    oninput="adjustWidth(event)">
+                &#127801;
+            </h3><br><br>
+            <h4>&#9997;आया है एक जश्न का त्योहार
+                जिसमे होता है भाई-बहन का प्यार
+                चलो मनाए राखी का ये त्योहार
+                <u>Happy Raksha Bandhan</u>&#9997;
+            </h4><br><br>
+
+            <!-- Form for email input -->
+            <form id="emailForm">
+                <label for="emailInput" class="EmailForm">Enter your email:</label>
+                <input type="email" id="emailInput" placeholder="Enter your email" required
+                    onfocus="removePlaceholder(event)" oninput="adjustWidth(event)">
+                <button type="submit">Send Wishes</button>
+            </form>
+        </div>
+        <div class="col-5">
+            <img src="output-onlinegiftools.gif" alt="Raksha Bandhan Celebration">
+        </div>
+    </div>
+    <div class="rainBg"></div>
+
+    <script>
+        function removePlaceholder(event) {
+            event.target.placeholder = '';
+        }
+
+        function adjustWidth(event) {
+            const input = event.target;
+            input.style.width = input.value.length > 0 ? input.value.length + 2 + "ch" : "130px";
+            if (input.value.length > 0) {
+                input.style.border = 'none';
+            } else {
+                input.style.border = '2px dotted #555'; // Reset border if input is empty
+            }
+        }
+
+        // Handling form submission with SweetAlert
+        document.getElementById('emailForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var name = document.getElementById('nameInput').value;
+            var email = document.getElementById('emailInput').value.toLowerCase(); // Convert email to lowercase
+
+            fetch('https://rakhi-chi.vercel.app/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name: name, email: email })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: data.message,
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        window.location.reload(); // Refresh the page after success
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    Swal.fire({
+                        title: 'Oops!',
+                        text: 'Something went wrong. Please try again.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* overflow: hidden; */
+}
+
+body {
+    background-image: linear-gradient(#ffa500, #ffffff, hwb(120 36% 0%));
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    /* margin-top: 50px; */
+}
+
+.col {
+    flex: 1 1 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+.col h1 {
+    font-size: 2.5em;
+    margin: 15px 0;
+    color: #333;
+}
+
+.col h2 {
+    font-size: 2em;
+    color: #555;
+}
+
+.col h3 {
+    font-size: 1.5em;
+    margin: 10px 0;
+    color: #777;
+}
+
+.col h4 {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #999;
+}
+
+.col-5 {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.col-5 img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
+input {
+    display: inline-block;
+    height: 40px;
+    width: 200px;
+    text-transform: capitalize; 
+    border: 2px ;
+    border-radius: 5px;
+    text-align: center;
+    margin: 10px 0;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+input:focus {
+    border-color: #ffa500;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 165, 0, 0.5);
+}
+
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ffa500;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #ff7f00;
+    transform: scale(1.05);
+}
+.EmailForm{
+    font-size: 20px !important;
+    font-weight: bold;
+    
+}
+@media (min-width: 768px) {
+    .col {
+        flex: 1 1 50%;
+        padding: 40px;
+    }
+
+    .col-5 {
+        flex: 1 1 50%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .col {
+        flex: 1 1 60%;
+    }
+
+    .col-5 {
+        flex: 1 1 40%;
+    }
+
+    .col h1 {
+        font-size: 2.5em;
+    }
+
+    .col h2 {
+        font-size: 1.8em;
+    }
+
+    .col h3 {
+        font-size: 1.8em;
+    }
+
+    .col h4 {
+        font-size: 1.4em;
+    }
+}
